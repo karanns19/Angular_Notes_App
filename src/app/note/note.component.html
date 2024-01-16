@@ -1,0 +1,31 @@
+<div>
+
+  <div class="note" (click)="view_note($event)" >
+    <div class="note_header common_header">
+      <img src='assets/angular.png' alt='' />
+      <div class="note_h_left">
+        <span class="note_username">You</span>
+        <span class='note_time'>{{ note.time | timeago }}</span>
+      </div>
+    </div>
+    <div class="note_title">
+      <span>{{ note.title }}</span>
+    </div>
+    <div class="note_content">
+      <span>{{ note.content }}</span>
+    </div>
+  </div>
+
+  <app-overlay
+    [visible]="true"
+    *ngIf="viewNote"
+  ></app-overlay>
+
+  <app-view-note
+    *ngIf="viewNote"
+    [note]="note"
+    (onView)="view_note($event)"
+    (onDelete)="delete_note($event)"
+  ></app-view-note>
+
+</div>
